@@ -1,0 +1,40 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+display: flex;
+background-color: rgb(216, 203, 87);
+align-items: center;
+justify-content: center;
+height: 100vh;
+
+
+
+}
+
+
+.container{
+width: 450px;
+height: 450px;
+background-color: aliceblue;
+border: 1px solid black;
+ display: flex;
+  justify-content: space-between;
+}
+.row{
+  
+  
+}
+
+.col{
+     
+border: 1px solid black;
+width: 150px;
+height: 150px;
+text-align: center;
+justify-content: center;
+font-size: 100px;
+}
