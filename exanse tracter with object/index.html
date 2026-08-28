@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<body id="body">
+    <div class="container">
+      <h1>💰 Expense Tracker</h1>
+
+      <div class="form">
+        <input type="text" placeholder="Expense Name" id="expenseName" />
+        <input type="number" placeholder="Amount" id="amount" />
+        <button onclick="addExpense()">Add Expense</button>
+        <button onclick="downloadPDF()">Download PDF</button>
+      </div>
+
+      <div class="list" id="list">
+        <!-- Total -->
+      </div>
+      <div class="total-box">
+        <span>Total Amount</span>
+        <strong id="totalAmount">225</strong>
+      </div>
+    </div>
+
+    <!-- 1. Include the html2pdf.js library via cdnjs CDN -->
+    <!-- 1. Include the html2pdf.js library via cdnjs CDN -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+      integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+
+
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>
