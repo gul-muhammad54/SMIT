@@ -1,0 +1,16 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.Quiz-card{
+    width: 620px;
+    height: 300px;
+    border: 1px solid black;
+}
