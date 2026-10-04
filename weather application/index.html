@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <main class="weather-app">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo">
+          <i class="fa-solid fa-cloud-sun"></i>
+          <span>Weatherly</span>
+        </div>
+      </header>
+
+      <!-- Search -->
+      <section class="search-section">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchbox" placeholder="Search city..." />
+          <button onclick="search()">Search</button>
+        </div>
+      </section>
+
+      <!-- Current Weather -->
+      <section class="current-weather">
+        <div class="location">
+          <div>
+            <h1 id="cityname" class="cityName"></h1>
+            <p>Saturday, September 5</p>
+          </div>
+        </div>
+
+        <div class="weather-main">
+          <div class="weather-icon">
+            <i class="fa-solid fa-cloud-sun"></i>
+          </div>
+
+          <div class="temp">
+            <h2 class="temp id='temp"></h2>
+            <span>C</span>
+          </div>
+
+          <div class="condition">
+            <h3>Partly Cloudy</h3>
+            <p>Feels like 35°C</p>
+          </div>
+        </div>
+
+        <!-- Weather Details -->
+        <div class="weather-details">
+          <div class="detail">
+            <i class="fa-solid fa-droplet"></i>
+            <div>
+              <span>Humidity</span>
+              <strong id="Humidity" class="weather"></strong>
+            </div>
+          </div>
+
+          <div class="detail">
+            <i class="fa-solid fa-wind"></i>
+            <div>
+              <span>Wind</span>
+              <strong>18 km/h</strong>
+            </div>
+          </div>
+
+          <div class="detail">
+            <i class="fa-solid fa-eye"></i>
+            <div>
+              <span>Visibility</span>
+              <strong>8 km</strong>
+            </div>
+          </div>
+
+          <div class="detail">
+            <i class="fa-solid fa-temperature-half"></i>
+            <div>
+              <span>Pressure</span>
+              <strong>1012 hPa</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Forecast -->
+      <section class="forecast">
+        <div class="section-title">
+          <h2>5-Day Forecast</h2>
+          <span>Weekly Weather</span>
+        </div>
+
+        <div class="forecast-container">
+          <div class="forecast-card">
+            <p>Sun</p>
+            <i class="fa-solid fa-sun"></i>
+            <h3>34°</h3>
+            <span>27°</span>
+            <small>Sunny</small>
+          </div>
+
+          <div class="forecast-card">
+            <p>Mon</p>
+            <i class="fa-solid fa-cloud-sun"></i>
+            <h3>33°</h3>
+            <span>26°</span>
+            <small>Cloudy</small>
+          </div>
+
+          <div class="forecast-card active">
+            <p>Tue</p>
+            <i class="fa-solid fa-cloud-rain"></i>
+            <h3>30°</h3>
+            <span>25°</span>
+            <small>Rainy</small>
+          </div>
+
+          <div class="forecast-card">
+            <p>Wed</p>
+            <i class="fa-solid fa-cloud"></i>
+            <h3>31°</h3>
+            <span>25°</span>
+            <small>Cloudy</small>
+          </div>
+
+          <div class="forecast-card">
+            <p>Thu</p>
+            <i class="fa-solid fa-sun"></i>
+            <h3>35°</h3>
+            <span>28°</span>
+            <small>Sunny</small>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>Weatherly © 2026 • Weather Dashboard</p>
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
