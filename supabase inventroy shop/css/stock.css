@@ -1,0 +1,19 @@
+.toolbar h3 {
+  margin-bottom: 0;
+}
+
+.toolbar input,
+.toolbar select {
+  margin-bottom: 0;
+  width: auto;
+}
+
+@media (max-width: 800px) {
+  .toolbar .btn-group {
+    width: 100%;
+  }
+
+  .toolbar input {
+    flex: 1;
+  }
+}

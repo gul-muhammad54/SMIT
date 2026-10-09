@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock - Inventory Manager</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/stock.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-brand">Inventory Manager</div>
+        <nav>
+          <button type="button" id="navDashboard" class="nav-link">
+            Dashboard
+          </button>
+          <button type="button" id="navPurchase" class="nav-link">
+            Purchase
+          </button>
+          <button type="button" id="navStock" class="nav-link active">
+            Stock
+          </button>
+          <button type="button" id="navSell" class="nav-link">Sell</button>
+        </nav>
+        <button type="button" id="logoutBtn" class="nav-link logout">
+          Log out
+        </button>
+      </aside>
+
+      <div id="sidebarOverlay" class="overlay"></div>
+
+      <main class="main">
+        <header class="topbar">
+          <button type="button" id="menuToggle" class="menu-toggle">
+            &#9776;
+          </button>
+          <h1>Stock</h1>
+          <div class="user">Ali</div>
+        </header>
+
+        <div class="panel">
+          <div class="row-between toolbar">
+            <h3>Current stock</h3>
+            <div class="btn-group">
+              <input
+                type="text"
+                id="stockSearch"
+                placeholder="Search product"
+              />
+              <select id="stockFilter">
+                <option value="all">All</option>
+                <option value="low">Low stock</option>
+                <option value="out">Out of stock</option>
+              </select>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>In stock</th>
+                <th>Buy price</th>
+                <th>Sell price</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="stockTableBody">
+              <tr>
+                <td>Rice 5kg</td>
+                <td>Grocery</td>
+                <td>64</td>
+                <td>Rs 1,000</td>
+                <td>Rs 1,200</td>
+                <td><span class="tag tag-ok">In stock</span></td>
+              </tr>
+              <tr>
+                <td>Cooking Oil 1L</td>
+                <td>Grocery</td>
+                <td>8</td>
+                <td>Rs 550</td>
+                <td>Rs 620</td>
+                <td><span class="tag tag-low">Low</span></td>
+              </tr>
+              <tr>
+                <td>Tea 950g</td>
+                <td>Beverages</td>
+                <td>35</td>
+                <td>Rs 1,050</td>
+                <td>Rs 1,250</td>
+                <td><span class="tag tag-ok">In stock</span></td>
+              </tr>
+              <tr>
+                <td>Dish Soap</td>
+                <td>Household</td>
+                <td>0</td>
+                <td>Rs 180</td>
+                <td>Rs 230</td>
+                <td><span class="tag tag-out">Out</span></td>
+              </tr>
+              <tr>
+                <td>Shampoo 400ml</td>
+                <td>Personal care</td>
+                <td>5</td>
+                <td>Rs 720</td>
+                <td>Rs 850</td>
+                <td><span class="tag tag-low">Low</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="js/common.js"></script>
+    <script type="module" src="../js/stock.js"></script>
+  </body>
+</html>

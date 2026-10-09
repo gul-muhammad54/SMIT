@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Purchase - Inventory Manager</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/purchase.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-brand">Inventory Manager</div>
+        <nav>
+          <button type="button" id="navDashboard" class="nav-link">
+            Dashboard
+          </button>
+          <button type="button" id="navPurchase" class="nav-link active">
+            Purchase
+          </button>
+          <button type="button" id="navStock" class="nav-link">Stock</button>
+          <button type="button" id="navSell" class="nav-link">Sell</button>
+        </nav>
+        <button type="button" id="logoutBtn" class="nav-link logout">
+          Log out
+        </button>
+      </aside>
+
+      <div id="sidebarOverlay" class="overlay"></div>
+
+      <main class="main">
+        <header class="topbar">
+          <button type="button" id="menuToggle" class="menu-toggle">
+            &#9776;
+          </button>
+          <h1>Purchase</h1>
+          <div class="user">Ali</div>
+        </header>
+
+        <div class="panel">
+          <h3>New purchase</h3>
+          <form id="purchaseForm" class="form-grid">
+            <div>
+              <label for="purchaseSupplier">Supplier</label>
+              <input
+                type="text"
+                id="purchaseSupplier"
+                placeholder="Supplier name"
+              />
+            </div>
+            <div>
+              <label for="purchaseInvoice">Invoice no.</label>
+              <input type="text" id="purchaseInvoice" placeholder="INV-0001" />
+            </div>
+            <div>
+              <label for="purchaseProduct">Product</label>
+              <input
+                type="text"
+                id="purchaseProduct"
+                placeholder="Product name"
+              />
+            </div>
+            <div>
+              <label for="purchaseCategory">Category</label>
+              <select id="purchaseCategory">
+                <option value="">Select category</option>
+                <option>Grocery</option>
+                <option>Beverages</option>
+                <option>Household</option>
+                <option>Personal care</option>
+              </select>
+            </div>
+            <div>
+              <label for="purchaseQty">Quantity</label>
+              <input type="number" id="purchaseQty" placeholder="0" min="1" />
+            </div>
+            <div>
+              <label for="purchasePrice">Unit price (Rs)</label>
+              <input type="number" id="purchasePrice" placeholder="0" min="0" />
+            </div>
+            <div>
+              <label for="purchaseDate">Purchase date</label>
+              <input type="date" id="purchaseDate" />
+            </div>
+            <div>
+              <label for="purchasePayment">Payment</label>
+              <select id="purchasePayment">
+                <option>Cash</option>
+                <option>Bank transfer</option>
+                <option>Credit</option>
+              </select>
+            </div>
+            <div class="full">
+              <label for="purchaseNotes">Notes</label>
+              <textarea
+                id="purchaseNotes"
+                rows="3"
+                placeholder="Optional"
+              ></textarea>
+            </div>
+            <div class="full row-between">
+              <p class="total">
+                Total: <strong id="purchaseTotal">Rs 0</strong>
+              </p>
+              <div class="btn-group">
+                <button
+                  type="button"
+                  id="purchaseClearBtn"
+                  class="btn btn-light"
+                >
+                  Clear
+                </button>
+                <button
+                  type="button"
+                  id="purchaseSaveBtn"
+                  class="btn btn-primary"
+                >
+                  Save purchase
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>Recent purchases</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Invoice</th>
+                <th>Supplier</th>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="purchaseTableBody">
+              <tr>
+                <td>INV-0142</td>
+                <td>Al Madina Traders</td>
+                <td>Cooking Oil 1L</td>
+                <td>50</td>
+                <td>Rs 27,500</td>
+              </tr>
+              <tr>
+                <td>INV-0141</td>
+                <td>Karachi Wholesale</td>
+                <td>Tea 950g</td>
+                <td>20</td>
+                <td>Rs 21,000</td>
+              </tr>
+              <tr>
+                <td>INV-0140</td>
+                <td>Al Madina Traders</td>
+                <td>Rice 5kg</td>
+                <td>40</td>
+                <td>Rs 40,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="..//js/common.js"></script>
+    <script type="module" src="../js/purchase.js"></script>
+  </body>
+</html>

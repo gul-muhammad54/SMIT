@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Inventory Manager</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-brand">Inventory Manager</div>
+        <nav>
+          <button type="button" id="navDashboard" class="nav-link active">
+            Dashboard
+          </button>
+          <button type="button" id="navPurchase" class="nav-link">
+            Purchase
+          </button>
+          <button type="button" id="navStock" class="nav-link">Stock</button>
+          <button type="button" id="navSell" class="nav-link">Sell</button>
+        </nav>
+        <button type="button" id="logoutBtn" class="nav-link logout">
+          Log out
+        </button>
+      </aside>
+
+      <div id="sidebarOverlay" class="overlay"></div>
+
+      <main class="main">
+        <header class="topbar">
+          <button type="button" id="menuToggle" class="menu-toggle">
+            &#9776;
+          </button>
+          <h1>Dashboard</h1>
+          <div class="user">Ali</div>
+        </header>
+
+        <div class="cards">
+          <div class="card">
+            <span>Total products</span><strong id="totalProducts">248</strong>
+          </div>
+          <div class="card">
+            <span>Low stock</span
+            ><strong id="lowStockCount" class="warn">12</strong>
+          </div>
+          <div class="card">
+            <span>Purchases this month</span
+            ><strong id="monthPurchases">Rs 184,500</strong>
+          </div>
+          <div class="card">
+            <span>Sales this month</span
+            ><strong id="monthSales">Rs 263,200</strong>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Recent activity</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody id="activityTableBody">
+              <tr>
+                <td>02 Oct</td>
+                <td><span class="tag tag-sell">Sell</span></td>
+                <td>Rice 5kg</td>
+                <td>10</td>
+                <td>Rs 12,000</td>
+              </tr>
+              <tr>
+                <td>02 Oct</td>
+                <td><span class="tag tag-buy">Purchase</span></td>
+                <td>Cooking Oil 1L</td>
+                <td>50</td>
+                <td>Rs 27,500</td>
+              </tr>
+              <tr>
+                <td>01 Oct</td>
+                <td><span class="tag tag-sell">Sell</span></td>
+                <td>Sugar 1kg</td>
+                <td>25</td>
+                <td>Rs 4,000</td>
+              </tr>
+              <tr>
+                <td>30 Sep</td>
+                <td><span class="tag tag-buy">Purchase</span></td>
+                <td>Tea 950g</td>
+                <td>20</td>
+                <td>Rs 21,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="../js/common.js"></script>
+    <script type="module" src="../js/dashboard.js"></script>
+  </body>
+</html>

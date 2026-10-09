@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sell - Inventory Manager</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/sell.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-brand">Inventory Manager</div>
+        <nav>
+          <button type="button" id="navDashboard" class="nav-link">
+            Dashboard
+          </button>
+          <button type="button" id="navPurchase" class="nav-link">
+            Purchase
+          </button>
+          <button type="button" id="navStock" class="nav-link">Stock</button>
+          <button type="button" id="navSell" class="nav-link active">
+            Sell
+          </button>
+        </nav>
+        <button type="button" id="logoutBtn" class="nav-link logout">
+          Log out
+        </button>
+      </aside>
+
+      <div id="sidebarOverlay" class="overlay"></div>
+
+      <main class="main">
+        <header class="topbar">
+          <button type="button" id="menuToggle" class="menu-toggle">
+            &#9776;
+          </button>
+          <h1>Sell</h1>
+          <div class="user">Ali</div>
+        </header>
+
+        <div class="panel">
+          <h3>New sale</h3>
+          <form id="sellForm" class="form-grid">
+            <div>
+              <label for="sellCustomer">Customer</label>
+              <input
+                type="text"
+                id="sellCustomer"
+                placeholder="Customer name"
+              />
+            </div>
+            <div>
+              <label for="sellPhone">Phone</label>
+              <input type="tel" id="sellPhone" placeholder="Optional" />
+            </div>
+            <div>
+              <label for="sellProduct">Product</label>
+              <select id="sellProduct">
+                <option value="">Select product</option>
+                <option>Rice 5kg</option>
+                <option>Cooking Oil 1L</option>
+                <option>Tea 950g</option>
+                <option>Shampoo 400ml</option>
+              </select>
+            </div>
+            <div>
+              <label for="sellAvailable">Available</label>
+              <input type="text" id="sellAvailable" value="-" readonly />
+            </div>
+            <div>
+              <label for="sellQty">Quantity</label>
+              <input type="number" id="sellQty" placeholder="0" min="1" />
+            </div>
+            <div>
+              <label for="sellPrice">Unit price (Rs)</label>
+              <input type="number" id="sellPrice" placeholder="0" min="0" />
+            </div>
+            <div>
+              <label for="sellDiscount">Discount (Rs)</label>
+              <input type="number" id="sellDiscount" placeholder="0" min="0" />
+            </div>
+            <div>
+              <label for="sellPayment">Payment</label>
+              <select id="sellPayment">
+                <option>Cash</option>
+                <option>Card</option>
+                <option>Bank transfer</option>
+                <option>Credit</option>
+              </select>
+            </div>
+            <div>
+              <label for="sellDate">Sale date</label>
+              <input type="date" id="sellDate" />
+            </div>
+            <div class="full row-between">
+              <p class="total">Total: <strong id="sellTotal">Rs 0</strong></p>
+              <div class="btn-group">
+                <button type="button" id="sellClearBtn" class="btn btn-light">
+                  Clear
+                </button>
+                <button type="button" id="sellSaveBtn" class="btn btn-primary">
+                  Save sale
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h3>Recent sales</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Payment</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="sellTableBody">
+              <tr>
+                <td>Ahmed</td>
+                <td>Rice 5kg</td>
+                <td>10</td>
+                <td>Cash</td>
+                <td>Rs 12,000</td>
+              </tr>
+              <tr>
+                <td>Walk-in</td>
+                <td>Sugar 1kg</td>
+                <td>25</td>
+                <td>Cash</td>
+                <td>Rs 4,000</td>
+              </tr>
+              <tr>
+                <td>Bilal Store</td>
+                <td>Tea 950g</td>
+                <td>6</td>
+                <td>Credit</td>
+                <td>Rs 7,500</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../js/common.js"></script>
+    <script type="module" src="../js/sell.js"></script>
+  </body>
+</html>

@@ -1,0 +1,292 @@
+/* Shared styles used by every page */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --bg: #f3f5f9;
+  --white: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e2e6ee;
+  --sidebar: #111827;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Forms ---------- */
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--white);
+  margin-bottom: 14px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+input[readonly] {
+  background: var(--bg);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-light {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-full {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+/* ---------- App layout (sidebar + main) ---------- */
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 230px;
+  background: var(--sidebar);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 12px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  transition: transform 0.25s;
+}
+
+.sidebar-brand {
+  font-weight: 700;
+  font-size: 17px;
+  padding: 0 12px 24px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  color: #cbd5e1;
+  text-align: left;
+  padding: 11px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.nav-link:hover {
+  background: #1f2937;
+  color: var(--white);
+}
+
+.nav-link.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.logout {
+  color: #fca5a5;
+}
+
+.main {
+  flex: 1;
+  margin-left: 230px;
+  padding: 0 24px 24px;
+  min-width: 0;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 0;
+}
+
+.topbar h1 {
+  font-size: 22px;
+  flex: 1;
+}
+
+.user {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.menu-toggle {
+  display: none;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 18px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.overlay {
+  display: none;
+}
+
+/* ---------- Panels and tables ---------- */
+.panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.panel h3 {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 11px 10px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.tag-sell { background: #dcfce7; color: #15803d; }
+.tag-buy  { background: #dbeafe; color: #1d4ed8; }
+.tag-ok   { background: #dcfce7; color: #15803d; }
+.tag-low  { background: #fef3c7; color: #b45309; }
+.tag-out  { background: #fee2e2; color: #b91c1c; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 800px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .overlay.show {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 10;
+  }
+
+  .main {
+    margin-left: 0;
+    padding: 0 16px 16px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .row-between {
+    flex-wrap: wrap;
+  }
+}
