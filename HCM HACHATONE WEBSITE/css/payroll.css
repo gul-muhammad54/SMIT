@@ -1,0 +1,4 @@
+/* Payroll page ki apni CSS */
+
+#slipTable td b { color: var(--primary); }
+#runBox .row { margin-bottom: 16px; }

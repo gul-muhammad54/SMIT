@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HCM Lite - AI-assisted Human Capital Management</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+
+  <body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+      <a class="brand" href="home.html">
+        <b>H</b>HCM Lite
+      </a>
+      <div class="nav-links">
+        <a href="home.html" class="active">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="leave.html">Leave</a>
+        <a href="payroll.html">Payroll</a>
+      </div>
+      <div class="nav-right">
+        <a class="btn-outline" href="login.html">Sign In</a>
+        <a class="btn-fill" href="setup.html">Company Setup</a>
+      </div>
+    </nav>
+
+    <main class="home">
+      <!-- Hero Section -->
+      <section class="hero">
+        <span class="pill-tag">✨ AI-assisted Human Capital Management • Hackathon 2026</span>
+        <h1>Manage. Track. <span>Empower Your Team</span></h1>
+        <p class="lead">
+          HCM Lite brings daily server-stamped attendance, leave quotas, compliant payroll, and an AI HR assistant together for Admin, HR, and Employees.
+        </p>
+        <div style="margin-top: 24px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+          <a class="btn-fill" href="login.html" style="font-size: 16px; padding: 14px 28px;">Access Portal</a>
+          <a class="btn-outline" href="setup.html" style="font-size: 16px; padding: 14px 28px;">First-Run Setup</a>
+        </div>
+        <div class="chips" style="margin-top: 32px;">
+          <span class="chip">⏱️ Automated Attendance</span>
+          <span class="chip">🏖️ Working-Day Leaves</span>
+          <span class="chip">💵 Tax Slabs & Payslips</span>
+          <span class="chip">🔒 Supabase RLS Security</span>
+          <span class="chip">🤖 AI HR Assistant</span>
+        </div>
+      </section>
+
+      <!-- Interactive AI Assistant Section -->
+      <section class="section">
+        <h2>Ask your HR Assistant anything</h2>
+        <p class="sub">Instant answers powered by your actual company policies and live system data.</p>
+        <div class="ai-card">
+          <div class="ai-head">🤖 AI HR Policy & Operations Assistant</div>
+          <div class="ai-body" id="aiChatBody">
+            <div class="bubble bot">
+              👋 Hello! I am your AI HR Assistant. You can ask me about office timings, grace periods, leave quotas, payroll calculations, or who is on leave today.
+            </div>
+          </div>
+
+          <div style="padding: 0 16px 12px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <span class="chip ai-prompt-chip" data-query="What are the official office hours and grace period?">⏰ Office hours?</span>
+            <span class="chip ai-prompt-chip" data-query="What are the annual leave quotas?">🏖️ Leave quotas?</span>
+            <span class="chip ai-prompt-chip" data-query="How is payroll gross, deductions and tax calculated?">💵 Payroll formula?</span>
+            <span class="chip ai-prompt-chip" data-query="Who is on leave today?">👥 Who is on leave today?</span>
+          </div>
+
+          <div class="ai-input">
+            <input type="text" id="aiPromptInput" placeholder="Ask about attendance, leaves, payroll rules, or who is absent..." />
+            <button class="btn-fill" type="button" id="btnSendAi">Ask AI</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 Quick Easy Steps -->
+      <section class="section">
+        <h2>Run Modern HR in 4 Streamlined Steps</h2>
+        <p class="sub">From zero configuration to your first compliant payroll run.</p>
+        <div class="grid">
+          <div class="job-card">
+            <div class="step-no">1</div>
+            <h4>Admin Setup</h4>
+            <p>Initialize workspace, office timings (09:00 with 15m grace), geo-radius, departments, and designations.</p>
+          </div>
+          <div class="job-card">
+            <div class="step-no">2</div>
+            <h4>HR Registers Staff</h4>
+            <p>Every employee gets temporary credentials and is prompted to establish a permanent password on first sign-in.</p>
+          </div>
+          <div class="job-card">
+            <div class="step-no">3</div>
+            <h4>Daily Operations</h4>
+            <p>Automated server timestamp punching, late detection, working-day leaves, and missed punch corrections.</p>
+          </div>
+          <div class="job-card">
+            <div class="step-no">4</div>
+            <h4>Payroll & Insights</h4>
+            <p>Generate draft salary sheets, progressive tax deductions, executive dashboard analytics, and printable payslip PDFs.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 Roles Matrix -->
+      <section class="section">
+        <h2>Engineered for Three Distinct Roles</h2>
+        <p class="sub">Strict server-side Row Level Security (RLS) ensures total data isolation.</p>
+        <div class="grid">
+          <div class="job-card">
+            <div class="job-top">
+              <div class="avatar" style="background: var(--primary);">A</div>
+              <h4>Admin</h4>
+            </div>
+            <p>First-run setup, company parameters, HR account governance, payroll locking, and full immutable audit log trail.</p>
+          </div>
+          <div class="job-card">
+            <div class="job-top">
+              <div class="avatar" style="background: var(--success);">H</div>
+              <h4>HR Manager</h4>
+            </div>
+            <p>Employee directory, dry-run CSV imports, attendance board oversight, leave reviews, and monthly salary drafting.</p>
+          </div>
+          <div class="job-card">
+            <div class="job-top">
+              <div class="avatar" style="background: var(--info);">E</div>
+              <h4>Employee</h4>
+            </div>
+            <p>Clock in/out, view working day balances, request punch corrections, apply for leave, and download official payslip vouchers.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h4>HCM Lite</h4>
+          <p>Built with ❤️ for Hackathon 2026. Fast, lightweight, pure vanilla ES modules & Supabase RLS.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="attendance.html">Attendance</a>
+          <a href="leave.html">Leave</a>
+          <a href="payroll.html">Payroll</a>
+        </div>
+        <div>
+          <h4>Authentication</h4>
+          <a href="login.html">Sign In</a>
+          <a href="setup.html">First-Time Setup</a>
+        </div>
+      </div>
+      <div class="copy">Copyright © HCM Lite 2026. All Rights Reserved.</div>
+    </footer>
+
+    <!-- ES Module Script -->
+    <script type="module" src="js/home.js"></script>
+  </body>
+</html>

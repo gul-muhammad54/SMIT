@@ -1,0 +1,41 @@
+/* Home page ki apni CSS */
+.hero { padding: 70px 5% 50px; text-align: center; background: radial-gradient(circle at 20% 0%, var(--soft), transparent 55%), radial-gradient(circle at 90% 20%, #ede9fe55, transparent 50%); }
+.pill-tag { display: inline-block; padding: 7px 16px; border-radius: 999px; background: var(--soft); color: var(--primary); font-size: 13px; font-weight: 700; margin-bottom: 18px; }
+.hero h1 { font-size: 52px; line-height: 1.1; max-width: 760px; margin: 0 auto 16px; }
+.hero h1 span { color: var(--primary); }
+.hero p.lead { color: var(--muted); max-width: 620px; margin: 0 auto 28px; font-size: 17px; line-height: 1.6; }
+.search-bar { display: flex; align-items: center; gap: 8px; max-width: 640px; margin: 0 auto; padding: 8px; background: var(--card); border: 1px solid var(--border); border-radius: 999px; box-shadow: var(--shadow); }
+.search-bar input { flex: 1; border: none; outline: none; background: transparent; color: var(--text); padding: 10px 16px; font-size: 15px; }
+.chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
+.chip { padding: 7px 14px; border-radius: 999px; background: var(--card); border: 1px solid var(--border); font-size: 13px; color: var(--muted); cursor: pointer; }
+.chip:hover { border-color: var(--primary); color: var(--primary); }
+.section { padding: 50px 5%; max-width: 1200px; margin: auto; }
+.section h2 { font-size: 30px; text-align: center; margin-bottom: 8px; }
+.section .sub { text-align: center; color: var(--muted); margin-bottom: 30px; }
+.ai-card { max-width: 560px; margin: 0 auto; background: var(--card); border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; text-align: left; }
+.ai-head { padding: 14px 18px; background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; font-weight: 700; }
+.ai-body { padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.bubble { padding: 11px 15px; border-radius: 16px; font-size: 14px; max-width: 85%; line-height: 1.5; }
+.bubble.bot { background: var(--soft); }
+.bubble.me { background: var(--primary); color: white; align-self: flex-end; }
+.ai-input { display: flex; gap: 8px; padding: 12px 18px 18px; }
+.ai-input input { flex: 1; padding: 11px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg); color: var(--text); outline: none; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
+.job-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 20px; box-shadow: var(--shadow); }
+.job-card:hover { border-color: var(--primary); }
+.job-top { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.avatar { width: 44px; height: 44px; border-radius: 12px; background: var(--soft); color: var(--primary); font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.job-card h4 { font-size: 16px; }
+.job-card p { color: var(--muted); font-size: 13px; margin-top: 4px; line-height: 1.5; }
+.job-card .open { display: block; margin-top: 14px; color: var(--primary); font-size: 13px; font-weight: 700; }
+.step-no { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: white; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+.footer { background: #0b1020; color: #cbd5e1; padding: 50px 5% 24px; margin-top: 40px; }
+.footer-grid { max-width: 1200px; margin: auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 30px; }
+.footer h4 { color: white; margin-bottom: 10px; }
+.footer p, .footer a { font-size: 14px; line-height: 1.8; color: #94a3b8; text-decoration: none; display: block; }
+.copy { max-width: 1200px; margin: 30px auto 0; padding-top: 18px; border-top: 1px solid #263050; font-size: 13px; color: #64748b; }
+
+@media (max-width: 900px) {
+  .hero h1 { font-size: 34px; }
+  .footer-grid { grid-template-columns: 1fr; }
+}

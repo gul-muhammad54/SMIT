@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset Password - HCM Lite</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+  </head>
+
+  <body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+      <a class="brand" href="index.html">
+        <b>H</b>HCM Lite
+      </a>
+      <div class="nav-right">
+        <a class="btn-outline" href="login.html">Sign In</a>
+      </div>
+    </nav>
+
+    <!-- Reset Container -->
+    <div class="auth-wrapper">
+      <div class="signup-container">
+        <h1>Set New Password</h1>
+        <p class="subtitle">Enter your new permanent password below</p>
+
+        <form id="resetForm" onsubmit="return false;">
+          <div class="form-group">
+            <label for="newPassword">New Password (min 6 characters)</label>
+            <input type="password" id="newPassword" placeholder="••••••••" autocomplete="new-password" />
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm New Password</label>
+            <input type="password" id="confirmPassword" placeholder="••••••••" autocomplete="new-password" />
+          </div>
+
+          <button type="button" id="btnReset" class="signup-btn">Reset Password</button>
+        </form>
+
+        <p class="login-text">
+          Remember your credentials? <a href="login.html">Back to Sign In</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- ES Module Script -->
+    <script type="module" src="js/reset.js"></script>
+  </body>
+</html>

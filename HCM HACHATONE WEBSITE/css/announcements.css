@@ -1,0 +1,4 @@
+/* Announcements page ki apni CSS */
+
+.note small { color: var(--muted); margin-left: 6px; }
+.note b { font-size: 15px; }

@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Setup - HCM Lite</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/settings.css" />
+  </head>
+
+  <body>
+    <!-- Top Role-based Dynamic Navbar -->
+    <nav class="navbar">
+      <a class="brand" href="dashboard.html">
+        <b>H</b>HCM Lite
+      </a>
+      <div class="nav-links" id="navLinks"></div>
+      <div class="nav-right">
+        <div class="user-pill">
+          <div class="profile-circle" id="profileCircle">A</div>
+          <span id="profileName">User</span>
+        </div>
+        <button class="btn-outline" id="btnLogout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header class="page-head">
+        <h1>Company Setup & Policies</h1>
+        <p>Configure office timings, geo-location radius, departments, designations, leave quotas, and holidays</p>
+      </header>
+
+      <main class="container">
+        <!-- Company Settings Card -->
+        <div class="box">
+          <h3>🏢 General Office Settings</h3>
+          <div class="row">
+            <div class="form-group">
+              <label for="cName">Company Name</label>
+              <input type="text" id="cName" placeholder="Acme Corp" />
+            </div>
+            <div class="form-group">
+              <label for="cStart">Office Start Time</label>
+              <input type="time" id="cStart" value="09:00" />
+            </div>
+            <div class="form-group">
+              <label for="cGrace">Grace Period (Minutes)</label>
+              <input type="number" id="cGrace" value="15" min="0" />
+            </div>
+            <div class="form-group">
+              <label for="cHalf">Half-Day Threshold (Hours)</label>
+              <input type="number" id="cHalf" value="5" step="0.5" min="1" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label for="cLat">Office Latitude</label>
+              <input type="number" step="any" id="cLat" placeholder="24.8607" />
+            </div>
+            <div class="form-group">
+              <label for="cLng">Office Longitude</label>
+              <input type="number" step="any" id="cLng" placeholder="67.0011" />
+            </div>
+            <div class="form-group">
+              <label for="cRadius">Allowed Radius (Meters)</label>
+              <input type="number" id="cRadius" value="150" min="10" />
+            </div>
+          </div>
+
+          <div class="row" style="margin-top: 10px;">
+            <button class="small-btn grey admin-action" type="button" id="btnUseLocation">📍 Use My Current Location</button>
+            <button class="small-btn green admin-action" type="button" id="btnSaveCompany">💾 Save Settings</button>
+            <span style="font-size: 13px; color: var(--muted); margin-left: auto;">Weekend: Sat & Sun (Fixed)</span>
+          </div>
+        </div>
+
+        <!-- Departments Box -->
+        <div class="box">
+          <h3>📁 Departments</h3>
+          <div class="row admin-action" style="margin-bottom: 20px;">
+            <div class="form-group" style="max-width: 320px;">
+              <label for="depName">Department Name</label>
+              <input type="text" id="depName" placeholder="e.g. Engineering, Sales, HR" />
+            </div>
+            <button class="small-btn green" type="button" id="btnAddDepartment">Add Department</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Department Name</th>
+                <th style="width: 100px;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="departmentsTable">
+              <!-- Rendered by settings.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Designations Box -->
+        <div class="box">
+          <h3>💼 Designations</h3>
+          <div class="row admin-action" style="margin-bottom: 20px;">
+            <div class="form-group" style="max-width: 320px;">
+              <label for="desName">Designation Title</label>
+              <input type="text" id="desName" placeholder="e.g. Software Engineer, HR Officer" />
+            </div>
+            <button class="small-btn green" type="button" id="btnAddDesignation">Add Designation</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Designation Title</th>
+                <th style="width: 100px;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="designationsTable">
+              <!-- Rendered by settings.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Leave Types Box -->
+        <div class="box">
+          <h3>🏖️ Leave Types & Quotas</h3>
+          <div class="row admin-action" style="margin-bottom: 20px;">
+            <div class="form-group">
+              <label for="ltName">Leave Type Name</label>
+              <input type="text" id="ltName" placeholder="e.g. Annual, Sick, Casual, Unpaid" />
+            </div>
+            <div class="form-group">
+              <label for="ltQuota">Annual Quota (Leave empty for Unlimited)</label>
+              <input type="number" id="ltQuota" placeholder="e.g. 14, 8, 10 or blank" min="1" />
+            </div>
+            <button class="small-btn green" type="button" id="btnAddLeaveType">Add Leave Type</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Leave Type</th>
+                <th>Annual Quota</th>
+                <th style="width: 100px;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="leaveTypesTable">
+              <!-- Rendered by settings.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Public Holidays Box -->
+        <div class="box">
+          <h3>🎉 Public Holidays</h3>
+          <div class="row admin-action" style="margin-bottom: 20px;">
+            <div class="form-group">
+              <label for="holName">Holiday Occasion</label>
+              <input type="text" id="holName" placeholder="e.g. Pakistan Day, Eid-ul-Fitr" />
+            </div>
+            <div class="form-group">
+              <label for="holDate">Date</label>
+              <input type="date" id="holDate" />
+            </div>
+            <button class="small-btn green" type="button" id="btnAddHoliday">Add Holiday</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Holiday Name</th>
+                <th>Date</th>
+                <th style="width: 100px;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="holidaysTable">
+              <!-- Rendered by settings.js -->
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <!-- ES Module Script -->
+    <script type="module" src="js/settings.js"></script>
+  </body>
+</html>

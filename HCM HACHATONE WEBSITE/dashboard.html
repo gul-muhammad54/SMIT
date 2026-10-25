@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - HCM Lite</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+
+  <body>
+    <!-- Top Role-based Dynamic Navbar -->
+    <nav class="navbar">
+      <a class="brand" href="dashboard.html">
+        <b>H</b>HCM Lite
+      </a>
+      <div class="nav-links" id="navLinks"></div>
+      <div class="nav-right">
+        <div class="user-pill">
+          <div class="profile-circle" id="profileCircle">U</div>
+          <span id="profileName">User</span>
+        </div>
+        <button class="btn-outline" id="btnLogout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+      <header class="page-head">
+        <h1 id="welcomeTitle">Dashboard</h1>
+        <p id="welcomeSubtitle">Workforce intelligence & HR operations hub</p>
+      </header>
+
+      <main class="container">
+        <!-- Date Range & Department Filters (Admin / HR) -->
+        <div class="box" id="filterBox" style="display: none;">
+          <div class="row">
+            <div class="form-group" style="max-width: 200px;">
+              <label for="fromDate">From Date</label>
+              <input type="date" id="fromDate" />
+            </div>
+            <div class="form-group" style="max-width: 200px;">
+              <label for="toDate">To Date</label>
+              <input type="date" id="toDate" />
+            </div>
+            <div class="form-group" style="max-width: 240px;">
+              <label for="deptFilter">Filter Department</label>
+              <select id="deptFilter">
+                <option value="">All Departments</option>
+              </select>
+            </div>
+            <button class="add-btn" type="button" id="btnApplyFilters">Apply Filters</button>
+          </div>
+        </div>
+
+        <!-- KPI Metric Cards Grid -->
+        <div class="cards" id="cards">
+          <!-- Rendered by dashboard.js -->
+        </div>
+
+        <!-- Graphical Breakdown Panels Grid -->
+        <div id="panelsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 20px; margin-bottom: 24px;">
+          <!-- Attendance by Status -->
+          <div class="box" id="panelAttStatus" style="display: none;">
+            <h3>📊 Attendance Breakdown</h3>
+            <div id="chartAttStatus"></div>
+          </div>
+
+          <!-- Top 5 Late Comers -->
+          <div class="box" id="panelLateComers" style="display: none;">
+            <h3>⏰ Top 5 Late Comers</h3>
+            <div id="chartLateComers"></div>
+          </div>
+
+          <!-- Leave by Type -->
+          <div class="box" id="panelLeaveTypes" style="display: none;">
+            <h3>🏖️ Leaves Distributed by Type</h3>
+            <div id="chartLeaveTypes"></div>
+          </div>
+
+          <!-- Headcount by Department -->
+          <div class="box" id="panelDeptHeadcount" style="display: none;">
+            <h3>👥 Headcount by Department</h3>
+            <div id="chartDeptHeadcount"></div>
+          </div>
+        </div>
+
+        <!-- Announcements & Notifications Section -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
+          <div class="box">
+            <h3>📢 Latest Company Announcements</h3>
+            <div id="annList">
+              <p style="color: var(--muted); font-size: 14px;">Loading announcements...</p>
+            </div>
+          </div>
+
+          <div class="box">
+            <h3>🔔 My Notifications</h3>
+            <div id="notifList">
+              <p style="color: var(--muted); font-size: 14px;">No unread notifications.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ES Module Script -->
+    <script type="module" src="js/dashboard.js"></script>
+  </body>
+</html>

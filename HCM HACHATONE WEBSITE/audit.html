@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audit Log - HCM Lite</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/audit.css" />
+  </head>
+
+  <body>
+    <!-- Top Role-based Dynamic Navbar -->
+    <nav class="navbar">
+      <a class="brand" href="dashboard.html">
+        <b>H</b>HCM Lite
+      </a>
+      <div class="nav-links" id="navLinks"></div>
+      <div class="nav-right">
+        <div class="user-pill">
+          <div class="profile-circle" id="profileCircle">A</div>
+          <span id="profileName">Admin</span>
+        </div>
+        <button class="btn-outline" id="btnLogout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header class="page-head">
+        <h1>System Audit Log</h1>
+        <p>Comprehensive security trail tracking actors, entity mutations, and before/after payloads</p>
+      </header>
+
+      <main class="container">
+        <div class="box">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h3>Security Event Records</h3>
+            <button class="small-btn grey" type="button" id="btnRefreshAudit">🔄 Refresh Log</button>
+          </div>
+
+          <div style="overflow-x: auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 170px;">Timestamp</th>
+                  <th>Actor</th>
+                  <th>Action</th>
+                  <th>Entity</th>
+                  <th>Payload Data (Before / After)</th>
+                </tr>
+              </thead>
+              <tbody id="auditTable">
+                <!-- Rendered by audit.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ES Module Script -->
+    <script type="module" src="js/audit.js"></script>
+  </body>
+</html>

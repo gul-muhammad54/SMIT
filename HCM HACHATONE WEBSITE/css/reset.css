@@ -1,0 +1,2 @@
+/* reset page ki apni CSS (auth.css ke saath lagti hai) */
+.signup-container h1 { color: var(--primary); }

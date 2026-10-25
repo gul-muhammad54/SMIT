@@ -1,0 +1,8 @@
+/* Dashboard page ki apni CSS */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.card { background: var(--card); padding: 20px; border-radius: 18px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+.card h3 { font-size: 28px; color: var(--primary); }
+.card p { color: var(--muted); font-size: 13px; margin-top: 4px; }
+.bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 14px; }
+.bar-row .label { width: 130px; color: var(--muted); }
+.bar-row .bar { height: 12px; background: linear-gradient(90deg, #4f46e5, #7c3aed); border-radius: 999px; }

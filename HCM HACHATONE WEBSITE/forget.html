@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recover Account - HCM Lite</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+    <link rel="stylesheet" href="css/forget.css" />
+  </head>
+
+  <body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+      <a class="brand" href="index.html">
+        <b>H</b>HCM Lite
+      </a>
+      <div class="nav-right">
+        <a class="btn-outline" href="login.html">Sign In</a>
+      </div>
+    </nav>
+
+    <!-- Recovery Container -->
+    <div class="auth-wrapper">
+      <div class="signup-container">
+        <h1>Recover Account</h1>
+        <p class="subtitle">Enter your work email to receive password reset instructions</p>
+
+        <form id="forgetForm" onsubmit="return false;">
+          <div class="form-group">
+            <label for="email">Work Email</label>
+            <input type="email" id="email" placeholder="name@company.com" autocomplete="email" />
+          </div>
+
+          <button type="button" id="btnForget" class="signup-btn">Send Reset Link</button>
+        </form>
+
+        <p class="login-text">
+          Remembered your password? <a href="login.html">Sign in</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- ES Module Script -->
+    <script type="module" src="js/forget.js"></script>
+  </body>
+</html>

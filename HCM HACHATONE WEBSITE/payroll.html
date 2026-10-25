@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payroll & Payslips - HCM Lite</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/payroll.css" />
+    <style>
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        #printablePayslip, #printablePayslip * {
+          visibility: visible;
+        }
+        #printablePayslip {
+          position: fixed;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: auto;
+          background: #fff !important;
+          color: #000 !important;
+          padding: 20px;
+          border: none !important;
+          box-shadow: none !important;
+        }
+        .no-print {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Top Role-based Dynamic Navbar -->
+    <nav class="navbar no-print">
+      <a class="brand" href="dashboard.html">
+        <b>H</b>HCM Lite
+      </a>
+      <div class="nav-links" id="navLinks"></div>
+      <div class="nav-right">
+        <div class="user-pill">
+          <div class="profile-circle" id="profileCircle">U</div>
+          <span id="profileName">User</span>
+        </div>
+        <button class="btn-outline" id="btnLogout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header class="page-head no-print">
+        <h1>Payroll & Compensation</h1>
+        <p>Salary calculations, attendance deductions, progressive tax slabs, payroll finalization, and printable payslips</p>
+      </header>
+
+      <main class="container">
+        <!-- HR / Admin Payroll Control Center -->
+        <div class="box no-print" id="payrollControlBox" style="display: none;">
+          <h3>💼 Payroll Runs Management</h3>
+          <p style="color: var(--muted); font-size: 14px; margin-bottom: 20px;">
+            Formula: Gross = 1.5 × Basic. Deductions = (Absent + Unpaid + 0.5 × Half-Days) × Per-Day. Joiners prorated. Tax calculated per annual slab.
+          </p>
+
+          <div class="row" style="align-items: flex-end;">
+            <div class="form-group" style="max-width: 220px;">
+              <label for="payrollMonth">Payroll Month (YYYY-MM)</label>
+              <input type="month" id="payrollMonth" />
+            </div>
+            <div class="form-group" style="max-width: 180px;">
+              <label for="workingDaysInput">Monthly Working Days</label>
+              <input type="number" id="workingDaysInput" value="22" min="15" max="31" />
+            </div>
+            <button class="add-btn" type="button" id="btnGenerateDraft">Calculate / Draft Run</button>
+            <button class="small-btn green" type="button" id="btnFinalizeRun" style="display: none;">🔒 Finalize Payroll Run (Admin)</button>
+          </div>
+
+          <div id="payrollRunBanner" style="margin-top: 14px; font-size: 14px; font-weight: 600;"></div>
+        </div>
+
+        <!-- Payslips Table -->
+        <div class="box no-print">
+          <h3 id="payslipsTableTitle">Payslips List</h3>
+          <div style="overflow-x: auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Employee</th>
+                  <th>Basic Salary</th>
+                  <th>Gross (1.5x)</th>
+                  <th>Deductions</th>
+                  <th>Income Tax</th>
+                  <th>Net Payout</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="payslipsTable">
+                <!-- Rendered by payroll.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Printable Payslip Modal / Voucher View -->
+    <div class="modal" id="payslipModal">
+      <div class="modal-content" style="max-width: 680px;">
+        <div class="modal-header no-print">
+          <h2>Salary Slip Voucher</h2>
+          <button type="button" class="close" id="btnClosePayslipModal">&times;</button>
+        </div>
+
+        <!-- Voucher Container for Printing or Viewing -->
+        <div id="printablePayslip" style="padding: 24px; border: 1.5px solid var(--border); border-radius: 12px; background: var(--card);">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid var(--border); padding-bottom: 16px; margin-bottom: 20px;">
+            <div>
+              <h2 id="slipCompany" style="font-size: 22px; font-weight: 800; color: var(--primary);">Acme Corp</h2>
+              <p style="color: var(--muted); font-size: 13px;">Official Monthly Payslip Voucher</p>
+            </div>
+            <div style="text-align: right;">
+              <h3 id="slipMonth" style="font-size: 18px; font-weight: 700;">2026-10</h3>
+              <span id="slipStatusBadge" class="badge finalized">FINALIZED</span>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; font-size: 14px;">
+            <div><strong>Employee Name:</strong> <span id="slipEmpName">John Doe</span></div>
+            <div><strong>Employee Code:</strong> <span id="slipEmpCode">EMP-001</span></div>
+            <div><strong>Department:</strong> <span id="slipEmpDept">Engineering</span></div>
+            <div><strong>Designation:</strong> <span id="slipEmpDes">Software Engineer</span></div>
+          </div>
+
+          <table style="margin-bottom: 20px;">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th style="text-align: right;">Amount (PKR)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Basic Salary</td>
+                <td style="text-align: right;" id="slipBasic">0</td>
+              </tr>
+              <tr>
+                <td>Allowances (50% of Basic)</td>
+                <td style="text-align: right;" id="slipAllowances">0</td>
+              </tr>
+              <tr style="background: var(--bg); font-weight: 700;">
+                <td>Total Gross Salary</td>
+                <td style="text-align: right;" id="slipGross">0</td>
+              </tr>
+              <tr>
+                <td>Attendance Deductions (<span id="slipDeductDays">0</span> days)</td>
+                <td style="text-align: right; color: var(--danger);" id="slipDeductions">-0</td>
+              </tr>
+              <tr>
+                <td>Income Tax (Slab Rate)</td>
+                <td style="text-align: right; color: var(--danger);" id="slipTax">-0</td>
+              </tr>
+              <tr style="background: var(--primary-light); font-size: 16px; font-weight: 800; color: var(--primary);">
+                <td>Net Payable Amount</td>
+                <td style="text-align: right;" id="slipNet">0</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="display: flex; justify-content: space-between; margin-top: 40px; font-size: 13px; color: var(--muted); border-top: 1px dashed var(--border); padding-top: 14px;">
+            <span>System Generated by HCM Lite</span>
+            <span>Signature / HR Verification</span>
+          </div>
+        </div>
+
+        <div class="no-print" style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+          <button type="button" class="small-btn grey" id="btnCloseSlip">Close</button>
+          <button type="button" class="add-btn" id="btnPrintSlip">🖨️ Print / Save as PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ES Module Script -->
+    <script type="module" src="js/payroll.js"></script>
+  </body>
+</html>

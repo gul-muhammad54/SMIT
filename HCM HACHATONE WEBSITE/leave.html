@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leave Management - HCM Lite</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/leave.css" />
+  </head>
+
+  <body>
+    <!-- Top Role-based Dynamic Navbar -->
+    <nav class="navbar">
+      <a class="brand" href="dashboard.html">
+        <b>H</b>HCM Lite
+      </a>
+      <div class="nav-links" id="navLinks"></div>
+      <div class="nav-right">
+        <div class="user-pill">
+          <div class="profile-circle" id="profileCircle">U</div>
+          <span id="profileName">User</span>
+        </div>
+        <button class="btn-outline" id="btnLogout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header class="page-head">
+        <h1>Leave Management</h1>
+        <p>Apply for leaves, track annual quotas, automated working-day calculation, and approvals</p>
+      </header>
+
+      <main class="container">
+        <!-- Leave Balances Cards (Employee view) -->
+        <div id="leaveBalanceContainer" style="display: none; margin-bottom: 24px;">
+          <h3 style="margin-bottom: 14px;">📊 My Leave Balances (Current Year)</h3>
+          <div class="cards" id="balanceCards">
+            <!-- Rendered by leave.js -->
+          </div>
+        </div>
+
+        <!-- Apply for Leave Section (Employee View) -->
+        <div class="box" id="applyLeaveBox" style="display: none;">
+          <h3>📝 Apply for Leave</h3>
+          <p style="color: var(--muted); font-size: 14px; margin-bottom: 16px;">
+            Weekends (Saturday & Sunday) and official public holidays are automatically excluded from leave deductions.
+          </p>
+
+          <form id="leaveForm" onsubmit="return false;">
+            <div class="row">
+              <div class="form-group">
+                <label for="leaveTypeSelect">Leave Type *</label>
+                <select id="leaveTypeSelect">
+                  <option value="">Select Leave Type</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="leaveStart">Start Date *</label>
+                <input type="date" id="leaveStart" />
+              </div>
+              <div class="form-group">
+                <label for="leaveEnd">End Date *</label>
+                <input type="date" id="leaveEnd" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="leaveReason">Reason for Leave *</label>
+              <textarea id="leaveReason" rows="2" placeholder="e.g. Family medical emergency / Casual personal trip"></textarea>
+            </div>
+
+            <div style="display: flex; gap: 14px; align-items: center; margin-top: 10px;">
+              <button class="add-btn" type="button" id="btnSubmitLeave">Submit Application</button>
+              <span id="workingDaysPreview" style="font-weight: 700; color: var(--primary); font-size: 14px;"></span>
+            </div>
+          </form>
+        </div>
+
+        <!-- HR / Admin Approvals Queue -->
+        <div class="box" id="hrApprovalsBox" style="display: none;">
+          <h3>⚖️ Pending Leave Approval Requests</h3>
+          <div style="overflow-x: auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Employee</th>
+                  <th>Leave Type</th>
+                  <th>Dates Range</th>
+                  <th>Working Days</th>
+                  <th>Reason</th>
+                  <th>Status</th>
+                  <th>Decision Actions</th>
+                </tr>
+              </thead>
+              <tbody id="approvalsTable">
+                <!-- Rendered by leave.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- My Leaves / All Leaves History Table -->
+        <div class="box">
+          <h3 id="leavesHistoryTitle">Leave Applications History</h3>
+          <div style="overflow-x: auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Employee</th>
+                  <th>Leave Type</th>
+                  <th>Dates Range</th>
+                  <th>Working Days</th>
+                  <th>Reason</th>
+                  <th>Status</th>
+                  <th>Reviewer Comment</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="leavesHistoryTable">
+                <!-- Rendered by leave.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Review / Comment Decision Modal -->
+    <div class="modal" id="reviewModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="reviewModalTitle">Review Leave Application</h2>
+          <button type="button" class="close" id="btnCloseReviewModal">&times;</button>
+        </div>
+        <form id="reviewForm" onsubmit="return false;">
+          <input type="hidden" id="reviewLeaveId" />
+          <input type="hidden" id="reviewDecision" />
+          <input type="hidden" id="reviewEmpUserId" />
+
+          <p id="reviewEmpDetails" style="font-size: 14px; margin-bottom: 14px; font-weight: 600;"></p>
+
+          <div class="form-group">
+            <label for="reviewComment">Review Comment / Feedback (Optional)</label>
+            <textarea id="reviewComment" rows="3" placeholder="e.g. Approved. Ensure project handover before leaving."></textarea>
+          </div>
+
+          <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+            <button type="button" class="small-btn grey" id="btnCancelReview">Cancel</button>
+            <button type="button" class="add-btn" id="btnConfirmReview">Confirm Decision</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ES Module Script -->
+    <script type="module" src="js/leave.js"></script>
+  </body>
+</html>

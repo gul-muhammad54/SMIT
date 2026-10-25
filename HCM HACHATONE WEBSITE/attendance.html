@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance & Corrections - HCM Lite</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/attendance.css" />
+  </head>
+
+  <body>
+    <!-- Top Role-based Dynamic Navbar -->
+    <nav class="navbar">
+      <a class="brand" href="dashboard.html">
+        <b>H</b>HCM Lite
+      </a>
+      <div class="nav-links" id="navLinks"></div>
+      <div class="nav-right">
+        <div class="user-pill">
+          <div class="profile-circle" id="profileCircle">U</div>
+          <span id="profileName">User</span>
+        </div>
+        <button class="btn-outline" id="btnLogout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header class="page-head">
+        <h1>Attendance Management</h1>
+        <p>Daily check-in / check-out, automated late & half-day stamping, attendance board, and corrections</p>
+      </header>
+
+      <main class="container">
+        <!-- Employee Self-Service Punch Card (Visible to Employee & HR with employee profile) -->
+        <div class="box" id="employeePunchBox" style="display: none;">
+          <h3>⏱️ My Daily Attendance</h3>
+          <p style="color: var(--muted); font-size: 14px; margin-bottom: 20px;">
+            Server time stamped automatically. Late is flagged after 09:15 AM (grace 15m), and half-day applies under 5 hours.
+          </p>
+
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+            <button class="add-btn" type="button" id="btnCheckIn" style="background: linear-gradient(135deg, #16a34a, #059669);">
+              🟢 Clock In (Check In)
+            </button>
+            <button class="add-btn" type="button" id="btnCheckOut" style="background: linear-gradient(135deg, #2563eb, #1d4ed8);">
+              🔴 Clock Out (Check Out)
+            </button>
+            <button class="small-btn grey" type="button" id="btnOpenCorrectionModal">
+              📝 Request Attendance Correction
+            </button>
+            <div id="punchStatusText" style="margin-left: auto; font-weight: 700; font-size: 14px;"></div>
+          </div>
+        </div>
+
+        <!-- HR / Admin Attendance Board Controls -->
+        <div class="box" id="adminBoardFilters" style="display: none;">
+          <h3>📋 Attendance Board</h3>
+          <div class="row">
+            <div class="form-group">
+              <label for="boardDate">Select Date</label>
+              <input type="date" id="boardDate" />
+            </div>
+            <div class="form-group">
+              <label for="boardDept">Filter Department</label>
+              <select id="boardDept">
+                <option value="">All Departments</option>
+              </select>
+            </div>
+            <button class="add-btn" type="button" id="btnRefreshBoard">Filter Attendance</button>
+          </div>
+        </div>
+
+        <!-- Attendance Records Table -->
+        <div class="box">
+          <h3 id="tableTitle">Attendance Records</h3>
+          <div style="overflow-x: auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Employee</th>
+                  <th>Department</th>
+                  <th>Check-In</th>
+                  <th>Check-Out</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="attendanceTable">
+                <!-- Rendered by attendance.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Pending Corrections Box (HR & Admin Only) -->
+        <div class="box" id="pendingCorrectionsBox" style="display: none;">
+          <h3>⚠️ Pending Attendance Corrections</h3>
+          <p style="color: var(--muted); font-size: 14px; margin-bottom: 16px;">
+            Review missed punch corrections submitted by employees.
+          </p>
+          <div style="overflow-x: auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Employee</th>
+                  <th>Target Date</th>
+                  <th>Reason Given</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="correctionsTable">
+                <!-- Rendered by attendance.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Request Correction Modal -->
+    <div class="modal" id="correctionModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Request Attendance Correction</h2>
+          <button type="button" class="close" id="btnCloseCorrectionModal">&times;</button>
+        </div>
+        <form id="correctionForm" onsubmit="return false;">
+          <div class="form-group">
+            <label for="correctionDate">Date of Missed / Incorrect Attendance *</label>
+            <input type="date" id="correctionDate" />
+          </div>
+          <div class="form-group">
+            <label for="correctionReason">Detailed Reason *</label>
+            <textarea id="correctionReason" rows="3" placeholder="e.g. System glitch on clock out / Official outdoor assignment"></textarea>
+          </div>
+          <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+            <button type="button" class="small-btn grey" id="btnCancelCorrection">Cancel</button>
+            <button type="button" class="add-btn" id="btnSubmitCorrection">Submit Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ES Module Script -->
+    <script type="module" src="js/attendance.js"></script>
+  </body>
+</html>

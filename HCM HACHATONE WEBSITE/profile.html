@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile - HCM Lite</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/profile.css" />
+  </head>
+
+  <body>
+    <!-- Top Role-based Dynamic Navbar -->
+    <nav class="navbar">
+      <a class="brand" href="dashboard.html">
+        <b>H</b>HCM Lite
+      </a>
+      <div class="nav-links" id="navLinks"></div>
+      <div class="nav-right">
+        <div class="user-pill">
+          <div class="profile-circle" id="profileCircle">U</div>
+          <span id="profileName">User</span>
+        </div>
+        <button class="btn-outline" id="btnLogout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header class="page-head">
+        <h1>Account Profile</h1>
+        <p>Personal details, job placement, contact information, and security preferences</p>
+      </header>
+
+      <main class="container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+          <!-- Profile Card -->
+          <div class="box">
+            <h3>👤 Profile Information</h3>
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+              <div class="profile-circle" id="cardAvatar" style="width: 56px; height: 56px; font-size: 24px;">U</div>
+              <div>
+                <h3 id="profileFullName" style="margin-bottom: 4px; font-size: 18px;">Full Name</h3>
+                <span class="badge" id="profileRoleBadge" style="background: var(--primary-light); color: var(--primary);">ROLE</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Registered Email Address</label>
+              <input type="email" id="profileEmail" disabled style="background: var(--bg); opacity: 0.8;" />
+            </div>
+
+            <div class="form-group" style="margin-top: 24px;">
+              <button class="small-btn blue" type="button" id="btnGoChangePassword">🔒 Change Account Password</button>
+            </div>
+          </div>
+
+          <!-- Employee Job & Contact Details -->
+          <div class="box" id="employeeDetailsBox" style="display: none;">
+            <h3>📋 Employment & Contact Details</h3>
+            <p style="color: var(--muted); font-size: 13px; margin-bottom: 16px;">
+              Per company policy, employees may update their phone number and residential address. Official job classifications are maintained by HR.
+            </p>
+
+            <div class="row">
+              <div class="form-group">
+                <label>Employee Code</label>
+                <input type="text" id="profEmpCode" disabled style="background: var(--bg); opacity: 0.8;" />
+              </div>
+              <div class="form-group">
+                <label>Join Date</label>
+                <input type="text" id="profEmpJoinDate" disabled style="background: var(--bg); opacity: 0.8;" />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <label>Assigned Department</label>
+                <input type="text" id="profEmpDept" disabled style="background: var(--bg); opacity: 0.8;" />
+              </div>
+              <div class="form-group">
+                <label>Designation Title</label>
+                <input type="text" id="profEmpDes" disabled style="background: var(--bg); opacity: 0.8;" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="profEmpPhone">Mobile Phone Number (Editable)</label>
+              <input type="tel" id="profEmpPhone" placeholder="+92 300 1234567" />
+            </div>
+
+            <div class="form-group">
+              <label for="profEmpAddress">Residential Address (Editable)</label>
+              <input type="text" id="profEmpAddress" placeholder="Street, City, Postal Code" />
+            </div>
+
+            <button class="add-btn" type="button" id="btnSaveProfile" style="margin-top: 10px;">💾 Save Contact Details</button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ES Module Script -->
+    <script type="module" src="js/profile.js"></script>
+  </body>
+</html>

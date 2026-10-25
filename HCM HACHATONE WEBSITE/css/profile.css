@@ -1,0 +1,4 @@
+/* My Profile page ki apni CSS */
+
+#pName { font-size: 22px; }
+#pInfo { color: var(--muted); margin-top: 6px; }

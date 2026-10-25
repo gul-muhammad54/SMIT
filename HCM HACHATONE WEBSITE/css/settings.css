@@ -1,0 +1,4 @@
+/* Company Setup page ki apni CSS */
+
+.box .row input { min-width: 180px; }
+p { color: var(--muted); font-size: 13px; }

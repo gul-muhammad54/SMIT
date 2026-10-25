@@ -1,0 +1,119 @@
+/* ============================================================================
+   auth.css - Authentication Pages Styling (Setup, Login, Change Password)
+   ============================================================================ */
+
+.auth-wrapper {
+  display: flex;
+  min-height: calc(100vh - 72px);
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.signup-container {
+  width: 100%;
+  max-width: 440px;
+  background: var(--card);
+  padding: 38px 34px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.signup-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-gradient);
+}
+
+.signup-container h1 {
+  text-align: center;
+  margin-bottom: 6px;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.signup-container .subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 26px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 13px 20px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--primary-gradient);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.signup-btn:hover:not(:disabled) {
+  opacity: 0.95;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.4);
+}
+
+.login-text {
+  text-align: center;
+  margin-top: 22px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.login-text a {
+  color: var(--primary);
+  font-weight: 700;
+  margin-left: 4px;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+.forget-text {
+  text-align: right;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.forget-text a {
+  color: var(--primary);
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.forget-text a:hover {
+  text-decoration: underline;
+}
+
+.auth-note {
+  background: var(--primary-light);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.auth-note b {
+  color: var(--primary);
+}

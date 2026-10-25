@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HR Logins - HCM Lite</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/users.css" />
+  </head>
+
+  <body>
+    <!-- Top Role-based Dynamic Navbar -->
+    <nav class="navbar">
+      <a class="brand" href="dashboard.html">
+        <b>H</b>HCM Lite
+      </a>
+      <div class="nav-links" id="navLinks"></div>
+      <div class="nav-right">
+        <div class="user-pill">
+          <div class="profile-circle" id="profileCircle">A</div>
+          <span id="profileName">Admin</span>
+        </div>
+        <button class="btn-outline" id="btnLogout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header class="page-head">
+        <h1>HR User Logins</h1>
+        <p>Manage Human Resource manager accounts, temporary passwords, and access status</p>
+      </header>
+
+      <main class="container">
+        <div class="top-bar">
+          <button class="add-btn" type="button" id="btnOpenHrModal">+ Create HR Account</button>
+        </div>
+
+        <div class="box">
+          <h3>Registered HR Officers</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Full Name</th>
+                <th>Work Email</th>
+                <th>Account Status</th>
+                <th>Password State</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="userTable">
+              <!-- Rendered by users.js -->
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <!-- Create HR Modal -->
+    <div class="modal" id="userModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Create New HR Login</h2>
+          <button type="button" class="close" id="btnCloseModal">&times;</button>
+        </div>
+        <form id="hrForm" onsubmit="return false;">
+          <div class="form-group">
+            <label for="hrName">HR Full Name</label>
+            <input type="text" id="hrName" placeholder="e.g. Sara Ahmed" />
+          </div>
+          <div class="form-group">
+            <label for="hrEmail">HR Work Email</label>
+            <input type="email" id="hrEmail" placeholder="sara.hr@company.com" />
+          </div>
+          <div class="form-group">
+            <label for="hrPass">Temporary Password (min 6 characters)</label>
+            <input type="text" id="hrPass" placeholder="e.g. TempPass123" />
+            <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
+              HR will be prompted to change this temporary password upon first sign-in.
+            </small>
+          </div>
+          <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+            <button type="button" class="small-btn grey" id="btnCancelModal">Cancel</button>
+            <button type="button" class="add-btn" id="btnSaveHr">Create HR Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ES Module Script -->
+    <script type="module" src="js/users.js"></script>
+  </body>
+</html>

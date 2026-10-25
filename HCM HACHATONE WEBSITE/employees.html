@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employees Directory - HCM Lite</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/employees.css" />
+  </head>
+
+  <body>
+    <!-- Top Role-based Dynamic Navbar -->
+    <nav class="navbar">
+      <a class="brand" href="dashboard.html">
+        <b>H</b>HCM Lite
+      </a>
+      <div class="nav-links" id="navLinks"></div>
+      <div class="nav-right">
+        <div class="user-pill">
+          <div class="profile-circle" id="profileCircle">H</div>
+          <span id="profileName">HR</span>
+        </div>
+        <button class="btn-outline" id="btnLogout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header class="page-head">
+        <h1>Employee Directory</h1>
+        <p>Register new staff members, manage employee records, CSV bulk import with dry run, and export</p>
+      </header>
+
+      <main class="container">
+        <!-- Top Toolbar with Actions -->
+        <div class="top-bar">
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+            <input type="text" id="searchEmployee" placeholder="🔍 Search by name or code..." style="padding: 10px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-pill); font-size: 14px; width: 260px;" />
+            <select id="filterDepartment" style="padding: 10px 14px; border: 1.5px solid var(--border); border-radius: var(--radius-pill); font-size: 14px; background: var(--card);">
+              <option value="">All Departments</option>
+            </select>
+          </div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="small-btn grey" type="button" id="btnExportCsv">📥 Export CSV</button>
+            <button class="small-btn blue" type="button" id="btnTriggerImport">📤 Import CSV (Dry Run)</button>
+            <input type="file" id="csvFileInput" accept=".csv" style="display: none;" />
+            <button class="add-btn" type="button" id="btnOpenEmpModal">+ Register Employee</button>
+          </div>
+        </div>
+
+        <!-- Employees Table -->
+        <div class="box">
+          <div style="overflow-x: auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Full Name</th>
+                  <th>Work Email</th>
+                  <th>Department</th>
+                  <th>Designation</th>
+                  <th>Join Date</th>
+                  <th>Basic Salary</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="employeesTable">
+                <!-- Rendered by employees.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Employee Registration / Edit Modal -->
+    <div class="modal" id="empModal">
+      <div class="modal-content" style="max-width: 640px;">
+        <div class="modal-header">
+          <h2 id="modalTitle">Register Employee</h2>
+          <button type="button" class="close" id="btnCloseEmpModal">&times;</button>
+        </div>
+        <form id="empForm" onsubmit="return false;">
+          <input type="hidden" id="editEmployeeId" />
+
+          <div class="row">
+            <div class="form-group">
+              <label for="empCode">Employee Code *</label>
+              <input type="text" id="empCode" placeholder="e.g. EMP-001" />
+            </div>
+            <div class="form-group">
+              <label for="empName">Full Name *</label>
+              <input type="text" id="empName" placeholder="e.g. John Smith" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label for="empEmail">Work Email *</label>
+              <input type="email" id="empEmail" placeholder="john.smith@company.com" />
+            </div>
+            <div class="form-group">
+              <label for="empPhone">Phone Number</label>
+              <input type="tel" id="empPhone" placeholder="+92 300 1234567" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="empAddress">Residential Address</label>
+            <input type="text" id="empAddress" placeholder="Street, City, Postal Code" />
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label for="empDepartment">Department</label>
+              <select id="empDepartment">
+                <option value="">Select Department</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="empDesignation">Designation</label>
+              <select id="empDesignation">
+                <option value="">Select Designation</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
+              <label for="empJoinDate">Join Date *</label>
+              <input type="date" id="empJoinDate" />
+            </div>
+            <div class="form-group">
+              <label for="empBasic">Basic Salary (PKR) *</label>
+              <input type="number" id="empBasic" placeholder="e.g. 100000" min="0" />
+            </div>
+          </div>
+
+          <div class="form-group" id="tempPasswordGroup">
+            <label for="empPassword">Temporary Password (min 6 characters) *</label>
+            <input type="text" id="empPassword" placeholder="e.g. EmployeePass123" />
+            <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
+              Employee will be prompted to set their permanent password upon first sign-in.
+            </small>
+          </div>
+
+          <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 24px;">
+            <button type="button" class="small-btn grey" id="btnCancelEmpModal">Cancel</button>
+            <button type="button" class="add-btn" id="btnSaveEmployee">Save Employee</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- CSV Dry Run Results Modal -->
+    <div class="modal" id="dryRunModal">
+      <div class="modal-content" style="max-width: 720px;">
+        <div class="modal-header">
+          <h2>CSV Import Dry Run Verification</h2>
+          <button type="button" class="close" id="btnCloseDryRunModal">&times;</button>
+        </div>
+        <p style="color: var(--muted); font-size: 14px; margin-bottom: 16px;">
+          The CSV file has been parsed and verified row by row. Review validation findings below before committing changes.
+        </p>
+
+        <div id="dryRunSummary" style="margin-bottom: 16px; font-weight: 700; font-size: 14px;"></div>
+
+        <div style="max-height: 320px; overflow-y: auto; margin-bottom: 20px;">
+          <table>
+            <thead>
+              <tr>
+                <th>CSV Row</th>
+                <th>Field</th>
+                <th>Status / Reason</th>
+              </tr>
+            </thead>
+            <tbody id="dryRunTable">
+              <!-- Rendered by dry run parser -->
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+          <button type="button" class="small-btn grey" id="btnCancelDryRun">Cancel</button>
+          <button type="button" class="add-btn" id="btnConfirmDryRun">Confirm & Import Valid Rows</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ES Module Script -->
+    <script type="module" src="js/employees.js"></script>
+  </body>
+</html>
